@@ -24,18 +24,19 @@
             <div id="cardHolderNameError" class="error-message"></div>
             
             <label for="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" name="cardNumber" pattern="\d{16}" autocomplete="off" required >
+            <input type="text" id="cardNumber" name="cardNumber"  autocomplete="off" required >
             <div id="cardNumberError" class="error-message"></div>
             
 
-            <label for="expiry-date">Expiry Date:</label>
-            <input type="text" id="expiry-date" placeholder="MM/YY" autocomplete="off" required>
+            <label for="expirationDate">Expiration Date:</label>
+            <input type="text" id="expirationDate" name="expirationDate" placeholder="MM/YY" autocomplete="off" required>
+            <div id="expirationDateError" class="error-message"></div>
     
             <label for="cvv">CVV:</label>
             <input type="text" id="cvv" name="cvv" autocomplete="off" autocomplete="off" required>
             <div id="cvvError" class="error-message"></div>
     
-            <button type="submit" onclick="validateCreditCard()">Confirm and continue</button>
+            <button type="button" onclick="submitForm()">Confirm and continue</button>
         </form>
     </div>
 
