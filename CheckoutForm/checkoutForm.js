@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Update the span element in html
   const discountedPriceSpan = document.getElementById('discounted_price');
   if (discountedPriceSpan) {
-      discountedPriceSpan.textContent = discountedPrice || 'N/A'; //if the value is not available (not sure if will happen)
+      discountedPriceSpan.textContent = discountedPrice + " ₪"|| 'N/A'; //if the value is not available (not sure if will happen)
   }
 });
 
