@@ -1,3 +1,4 @@
+
 header {
     background-color: #ffffff;
     color: #4343ff;
@@ -14,7 +15,10 @@ header {
 h1{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
 }
+
+
 
 form{
     font-family: Arial, Helvetica, sans-serif;
@@ -25,11 +29,18 @@ form{
     row-gap: 10px;
 }
 
+label{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
 input {
     
     padding: 3px;
     box-sizing: border-box;
-    border: 1px solid #ccc; /* default border color */
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    
   }
 
 input.error {
@@ -37,12 +48,21 @@ input.error {
   }
 
 button{
-    padding: 5px;
+    padding: 10px;
     margin: 5px;
+    cursor: pointer;
+    background-color: rgb(0, 54, 104);
+    -webkit-text-fill-color: #ffffff;
+    border-radius: 10px;
 }
+button:hover {
+    transform: scale(1.1);
+    transition: transform 0.7s;
+  }
 
 .error-message {
     color: red;
+    text-align: left;
     
   }
   
