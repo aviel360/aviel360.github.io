@@ -4,11 +4,22 @@ document.getElementById('cvv').addEventListener('input', validateCVV);
 document.getElementById('expirationDate').addEventListener('input', validateExpirationDate);
 document.getElementById('expirationDate').addEventListener('input', validateExpirationDate);
 
+
 //To hold the prev inputs so the user can corrent them
 let prevCardNumber = '';
 let prevCardHolderName = '';
 let prevCVV = '';
 let prevDate = '';
+
+document.addEventListener('DOMContentLoaded', function() {
+  const discountedPrice = window.localStorage.getItem('discounted_price');
+
+  // Update the span element in html
+  const discountedPriceSpan = document.getElementById('discounted_price');
+  if (discountedPriceSpan) {
+      discountedPriceSpan.textContent = discountedPrice || 'N/A'; //if the value is not available (not sure if will happen)
+  }
+});
 
 function validateCardHolderName() 
 {
