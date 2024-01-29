@@ -1,4 +1,4 @@
-import { productsData } from "../assets/data.js"; 
+import { productsData } from "../Assets/data.js"; 
 
 const productsCatalog = document.getElementById('catalog');
 
@@ -33,7 +33,7 @@ function generateProduct(product) {
     return `<div class="product">
                 <button class="checkout" data-id="${product.id}" type="button" >
                 <h2>${product.title}</h2>
-                <img src="../assets/images/${product.image_file_name}" alt="${product.title}">
+                <img src="../Assets/images/${product.image_file_name}" alt="${product.title}">
                 <p>${product.description}</p>
                 <p><s>${product.price}₪</s></p> 
                 <h3>${product.discounted_price}₪</h3>

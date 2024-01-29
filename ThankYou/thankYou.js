@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const productDescription = window.localStorage.getItem('description');
     productView.innerHTML += `<div class="product">
     <h2>${productTitle}</h2>
-    <img src="../assets/images/${productImg}" alt="${productTitle}">
+    <img src="../Assets/images/${productImg}" alt="${productTitle}">
     <p>${productDescription}</p>
 </div>`; 
 });
