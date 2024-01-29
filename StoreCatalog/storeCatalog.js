@@ -20,9 +20,12 @@ productsCatalog.addEventListener('click', function(event)
         }
     }
 });
+
 function GoToPaymentPage(product) {
-    const discountPrice = product.discounted_price;
-    window.localStorage.setItem('discounted_price', discountPrice);
+    window.localStorage.setItem('title', product.title);
+    window.localStorage.setItem('img', product.image_file_name);
+    window.localStorage.setItem('discounted_price', product.discounted_price);
+    window.localStorage.setItem('description', product.description);
     window.location.href = "../checkoutForm/checkoutForm.html";
 }
 

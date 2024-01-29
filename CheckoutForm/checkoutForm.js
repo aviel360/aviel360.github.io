@@ -154,11 +154,7 @@ function validateCardNumber() {
       return false;
     }
 
-    else
-    {
-      alert('Form submitted successfully!');
-      return true;
-    }
+    return true;
   }
 
   function CheckFieldsAreEmpty()
@@ -177,8 +173,7 @@ function validateCardNumber() {
   {
     if (validateAllPaymentDetails()) 
     {
-      const form = document.getElementById('checkout_form');
-      form.submit();
+      window.location.href = "../thankYou/thankYou.html";
     }
   }
 
