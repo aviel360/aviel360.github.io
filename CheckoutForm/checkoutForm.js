@@ -173,7 +173,7 @@ function validateCardNumber() {
   {
     if (validateAllPaymentDetails()) 
     {
-      window.location.href = "../thankYou/thankYou.html";
+      window.location.href = "../ThankYou/thankYou.html";
     }
   }
 
