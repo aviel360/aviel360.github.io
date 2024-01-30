@@ -13,21 +13,21 @@
     <header>
         <img src="../assets/images/technionshop.png" class="logo">
     </header>
-
+    <div class='payment-details-win'>
     <div>
-        <h1>Payment Details</h1>
+        <h1 class="payment-title">Payment Details</h1>
+        <p class="price_tag">Total Price:  <span id="discounted_price"> </span></p>
     </div>
-    <div><p class="price_tag">Total Price:  <span id="discounted_price"> </span></p></div>
     
     <div>
         <form id="checkout_form" class="form">
-
+            
             <label for="cardHolderName">Card Holder's Name:</label>
-            <input type="text" id="cardHolderName" name="cardHolderName" autocomplete="off" required >
+            <input type="text" id="cardHolderName" name="cardHolderName" autocomplete="off" placeholder="Doug Judy" required >
             <div id="cardHolderNameError" class="error-message"></div>
             
             <label for="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" name="cardNumber"  autocomplete="off" required >
+            <input type="text" id="cardNumber" name="cardNumber"  autocomplete="off" placeholder="****************" required >
             <div id="cardNumberError" class="error-message"></div>
             
 
@@ -36,12 +36,13 @@
             <div id="expirationDateError" class="error-message"></div>
     
             <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" name="cvv" autocomplete="off" autocomplete="off" required>
+            <input type="text" id="cvv" name="cvv" autocomplete="off" autocomplete="off" placeholder="***" required>
             <div id="cvvError" class="error-message"></div>
     
             <button type="button" onclick="submitForm()">Confirm and continue</button>
         </form>
     </div>
+</div>
 
     <footer>
         <h1>2</h1>

@@ -112,7 +112,7 @@ function validateCardNumber() {
       if(!DateRegex.test(expirationDateInput.value))
       {
         expirationDateInput.classList.add('error');
-        expirationDateError.innerText = 'Please enter a valid expiration date in MM/YY format.';
+        expirationDateError.innerText = 'Please enter a valid date in MM/YY format.';
         return false;
       }
     

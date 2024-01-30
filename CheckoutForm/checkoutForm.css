@@ -1,24 +1,31 @@
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
 
 header {
-    background-color: #ffffff;
-    color: #4343ff;
-    padding: 10px;
+    background-color: #fff;
+    padding: 20px;
     text-align: center;
+}
+
+
+footer {
+    background-color: #f7f7f7;
+    color: rgb(0, 42, 81);
+    margin-top: -15px;
+    text-align: center;
+    font-size: 12px;
 }
 
 .logo {
     align-items: center;
-    margin-bottom: -25px;
-    width: 350px;
+    margin-bottom: -20px;
+    width: 300px;
 }
 
-footer {
-    background-color: #ffffff;
-    color: #4343ff;
-    padding: 10px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-}
 
 h1{
     text-align: center;
@@ -27,63 +34,89 @@ h1{
 }
 
 
-.price_tag{
+.payment-details-win {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    border-radius: 8px;
+}
+
+.payment-title {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.price_tag {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 30px;
+
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
+    /* padding: 10px; */
     margin-bottom: 30px;
     font-weight: bold;
     font-size: medium;
 }
+
 #discounted_price{
     font-weight: normal;
     font-size: larger;
 }
 
-
-form{
-    font-family: Arial, Helvetica, sans-serif;
-    flex-flow: column wrap;
-    display: flex;
+.form {
+    display: grid;
+    
+    grid-gap: 10px;
     align-items: center;
-    justify-content: space-between;
-    row-gap: 10px;
+    justify-content: center;
 }
 
-label{
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
+
+label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    align-items: center;
 }
 
-input {
-    
-    padding: 3px;
+input{
+    width: 320px;
+    padding: 8px;
     box-sizing: border-box;
-    border: 1px solid #ccc; 
-    border-radius: 5px;
+    font-size: 14px;
+    align-items: center;
+    border-radius: 8px;
     
-  }
+}
 
 input.error {
     border: 1px solid red;
   }
 
-button{
-    padding: 10px;
-    margin: 5px;
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
     cursor: pointer;
-    background-color: rgb(0, 54, 104);
+    border: none;
+    margin: 5px;
+    background-color: rgb(0, 42, 81);
     -webkit-text-fill-color: #ffffff;
     border-radius: 10px;
+    
 }
+
 button:hover {
-    transform: scale(1.1);
-    transition: transform 0.7s;
+    transform: scale(1.08);
+    transition: transform 0.5s;
   }
 
-.error-message {
-    color: red;
-    text-align: left;
-    
-  }
-  
