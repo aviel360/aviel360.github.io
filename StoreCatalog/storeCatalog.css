@@ -1,12 +1,11 @@
 body {
-    font-family: 'Verdana', sans-serif;
+    font-family: 'Verdana', Arial, sans-serif;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #ffffff;
-    /* color: #1f1fb7; */
     padding: 10px;
     text-align: center;
     flex-direction: row;
@@ -22,6 +21,12 @@ header {
     /* text-transform: uppercase; */
 }
 
+.logo {
+    align-items: center;
+    margin-bottom: -20px;
+    width: 300px;
+}
+
 footer {
     font-family: 'Verdana', sans-serif;
     color: #333;
@@ -30,21 +35,15 @@ footer {
     font-size: 12px;
 }
 
-.logo {
-    align-items: center;
-    margin-bottom: -20px;
-    width: 300px;
-}
 
 .container {
     display: flex;
     flex-wrap:wrap;
-    /* background-color: beige; */
     margin-left: 50px;
     margin-right: 50px;
     justify-content: space-around;
     grid-template-columns: repeat(3, 1fr);
-   padding: 15px;
+   padding: 3%;
     
 }
 
@@ -54,21 +53,21 @@ footer {
     text-align: center;
     flex: 4;
     padding: 20px;
-    
 }
 
 .checkout {
     background: none;
     padding: 8px;
-    font: inherit;
     max-width: 450px;
+    text-align: center; 
+    font: inherit;
     color: inherit;
     cursor: pointer;
+
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Center the text */
 }
 
 .product-title{
@@ -86,11 +85,12 @@ footer {
     align-items: center;
     padding: 15px;
     margin-top: 15px;
+    text-align: center; 
+
     /* border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-    text-align: center; /* Center the text */
 }
 
 .checkout:hover {

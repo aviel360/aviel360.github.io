@@ -11,19 +11,19 @@ header {
     text-align: center;
 }
 
-
-footer {
-    background-color: #f7f7f7;
-    color: #333;
-    margin-top: -15px;
-    text-align: center;
-    font-size: 12px;
-}
-
 .logo {
     align-items: center;
     margin-bottom: -20px;
     width: 300px;
+}
+
+footer {
+    background-color: #f7f7f7;
+    font-family: 'Verdana', sans-serif;
+    color: #333;
+    margin-top: -15px;
+    text-align: center;
+    font-size: 12px;
 }
 
 
@@ -39,7 +39,7 @@ h1{
     margin: 30px auto;
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0.2, 0.2);
     align-items: center;
     border-radius: 8px;
 }
@@ -121,3 +121,28 @@ button:hover {
     transition: transform 0.5s;
   }
 
+.date-selector{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.month-selector, .year-selector{
+    flex-direction: column;
+    margin-right: 35px;
+}
+
+.year-selector{
+    justify-content:right;
+    align-items: end;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

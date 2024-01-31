@@ -3,11 +3,15 @@ import { productsData } from "../assets/data.js";
 const productsCatalog = document.getElementById('catalog');
 
 let products = productsData.products.sort(() => Math.random() - 0.5);
+
+//*** 1st way ***/
 // products.forEach(product => {
 //     productsCatalog.innerHTML += generateProduct(product)
 // })
 
 //products.forEach(product => {GenerateProductNew(product)})
+
+//*** 2nd way ***/
 document.addEventListener('DOMContentLoaded', function() {
     products.forEach(product => {GenerateProductNew(product)})
 });
@@ -48,7 +52,6 @@ function generateProduct(product) {
 
 function GenerateProductNew(product)
 {
-    console.log('Generating product:', product);
     const newProductkDiv = document.createElement('div');
     newProductkDiv.className = "product";
 
@@ -57,34 +60,36 @@ function GenerateProductNew(product)
     checkoutButton.dataset.id= product.id;
     checkoutButton.type = "button";
 
-    
     newProductkDiv.appendChild(checkoutButton);
 
-     // Create and append the h2 element
+     // Create and append product title
      const productTitle = document.createElement('h2');
      productTitle.textContent = product.title;
      checkoutButton.appendChild(productTitle);
 
+     // Create and append product image
     const image = document.createElement('img');
     image.src = "../assets/images/".concat(product.image_file_name);
     image.className = "product-img"
     image.alt = product.title;
     checkoutButton.appendChild(image);
 
+    //new div for the description and price f product
     const ProductDescriptionDiv = document.createElement('div');
 
-    // Create and append the paragraph
     const description = document.createElement('p');
     description.textContent = product.description;
     description.className = "product-descreption"
     ProductDescriptionDiv.appendChild(description);
 
+    //original price with a line through it
     const price = document.createElement('p');
     const reducted = document.createElement('s');
     reducted.textContent = product.price + " ₪";;
     price.appendChild(reducted);
     ProductDescriptionDiv.appendChild(price);
 
+    //dicounted price
     const discountPrice = document.createElement("h3");
     discountPrice.textContent = product.discounted_price + " ₪";
     ProductDescriptionDiv.appendChild(discountPrice);
@@ -92,7 +97,6 @@ function GenerateProductNew(product)
     ProductDescriptionDiv.className = 'ProductTextBox';
     checkoutButton.appendChild(ProductDescriptionDiv);
 
-    // Append the new shark to the container
     document.getElementById('catalog').appendChild(newProductkDiv);
 
 }
