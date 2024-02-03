@@ -4,16 +4,9 @@ const productsCatalog = document.getElementById('catalog');
 
 let products = productsData.products.sort(() => Math.random() - 0.5);
 
-//*** 1st way ***/
-// products.forEach(product => {
-//     productsCatalog.innerHTML += generateProduct(product)
-// })
 
-//products.forEach(product => {GenerateProductNew(product)})
-
-//*** 2nd way ***/
 document.addEventListener('DOMContentLoaded', function() {
-    products.forEach(product => {GenerateProductNew(product)})
+    products.forEach(product => {GenerateProduct(product)})
 });
 
 
@@ -38,19 +31,8 @@ function GoToPaymentPage(product) {
     window.location.href = "../CheckoutForm/checkoutForm.html";
 }
 
-function generateProduct(product) {
-    return `<div class="product">
-                <button class="checkout" data-id="${product.id}" type="button" >
-                <h2>${product.title}</h2>
-                <img src="../assets/images/${product.image_file_name}" alt="${product.title}">
-                <p>${product.description}</p>
-                <p><s>${product.price}₪</s></p> 
-                <h3>${product.discounted_price}₪</h3>
-            </div>`; 
-}
 
-
-function GenerateProductNew(product)
+function GenerateProduct(product)
 {
     const newProductkDiv = document.createElement('div');
     newProductkDiv.className = "product";
