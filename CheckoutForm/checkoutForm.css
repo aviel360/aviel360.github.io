@@ -45,8 +45,9 @@ h1{
 }
 
 .payment-title {
+    font-family: Tahoma,sans-serif;
     color: #333;
-    font-size: 2.2em;
+    font-size: 2.5em;
     margin-bottom: 10px;
 }
 
@@ -121,7 +122,8 @@ button:hover {
     transition: transform 0.5s;
   }
 
-.date-selector{
+.select-container{
+    margin-top: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -145,4 +147,8 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.invalid {
+    border: 1px solid red;
 }

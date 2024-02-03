@@ -1,8 +1,9 @@
 document.getElementById('cardNumber').addEventListener('input', validateCardNumber);
 document.getElementById('cardHolderName').addEventListener('input', validateCardHolderName);
 document.getElementById('cvv').addEventListener('input', validateCVV);
-document.getElementById('expirationDate').addEventListener('input', validateExpirationDate);
-document.getElementById('expirationDate').addEventListener('input', validateExpirationDate);
+document.getElementById('expirationMonth').addEventListener('input', validateExpirationDateSelectors);
+document.getElementById('expirationYear').addEventListener('input', validateExpirationDateSelectors);
+
 
 
 //To hold the prev inputs so the user can corrent them
@@ -18,6 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
   const discountedPriceSpan = document.getElementById('discounted_price');
   if (discountedPriceSpan) {
       discountedPriceSpan.textContent = discountedPrice + " ₪"|| 'N/A'; //if the value is not available (not sure if will happen)
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var currentYear = new Date().getFullYear();
+  var selectYear = document.getElementById('expirationYear');
+
+  for (var i = currentYear; i <= currentYear + 20; i++) {
+      var option = document.createElement('option');
+      option.value = i;
+      option.text = i;
+      selectYear.add(option);
   }
 });
 
@@ -96,46 +109,48 @@ function validateCardNumber() {
     return true;
   }
 
-  function validateExpirationDate() 
+
+  function validateExpirationDateSelectors() 
   {
+    const selectedMonth = document.getElementById('expirationMonth');
+    const selectedYear = document.getElementById('expirationYear');
+    const monthError = document.getElementById('monthError');
+    const yearError = document.getElementById('yearError');
+    const dateError =  document.getElementById('dateError');
 
-    const expirationDateInput = document.getElementById('expirationDate');
-    const expirationDateError = document.getElementById('expirationDateError');
-  
-    expirationDateInput.classList.remove('error');
-    expirationDateError.innerText = '';
+    selectedMonth.classList.remove('invalid');
+    selectedYear.classList.remove('invalid');
+    monthError.innerText = '';
+    yearError.innerText = '';
+    dateError.innerText = '';
 
-    const DateRegex = /^\d{2}\/\d{2}$/;
-
-    if(expirationDateInput.value != "")
+    if(selectedMonth.value != '' && selectedYear.value != '')
     {
-      if(!DateRegex.test(expirationDateInput.value))
-      {
-        expirationDateInput.classList.add('error');
-        expirationDateError.innerText = 'Please enter a valid date in MM/YY format.';
-        return false;
-      }
-    
-      const currentDate = new Date();
-      const enteredDateParts = expirationDateInput.value.split('/');
-      const enteredMonth = parseInt(enteredDateParts[0], 10);
-      const enteredYear = parseInt(enteredDateParts[1], 10);
-      if(enteredMonth < 1 || enteredMonth>12)
-      {
-        expirationDateInput.classList.add('error');
-        expirationDateError.innerText = 'Please enter a valid expiration date in MM/YY format.';
-        return false;
-      }
-      const selectedDate = new Date(`20${enteredYear}-${enteredMonth}-01`);
-    
-      if (selectedDate <= currentDate) {
-        expirationDateInput.classList.add('error');
-        expirationDateError.innerText = 'Date must be a valid future date';
-        return false;
-      }
+      // Get the current date
+      var currentDate = new Date();
+      var currentYear = currentDate.getFullYear();
+      var currentMonth = currentDate.getMonth()+1; // Months are zero-indexed
+      
+      var selectedMonthNumber = parseInt(selectedMonth.value, 10);
+      var selectedYearNumber = parseInt(selectedYear.value, 10);
+      if ( selectedYearNumber < currentYear || (selectedYearNumber == currentYear && selectedMonthNumber < currentMonth))
+        {
+          selectedMonth.classList.add('invalid');
+          selectedYear.classList.add('invalid');
+          dateError.innerText = 'Date must be a valid future date';
+          return false;
+        }
+    }
+    return true;
   }
-  prevDate = expirationDateInput.value;
-  return true;
+
+
+  function submitForm() 
+  {
+    if (validateAllPaymentDetails()) 
+    {
+      window.location.href = "../ThankYou/thankYou.html";
+    }
   }
 
   function validateAllPaymentDetails() 
@@ -147,10 +162,10 @@ function validateCardNumber() {
 
     const isCardNumberValid = validateCardNumber();
     const isCardHolderNameValid = validateCardHolderName();
-    const isExpirationDateValid = validateExpirationDate();
+    const isExpirationDateValid = validateExpirationDateSelectors();
     const isCvvValid = validateCVV();
     
-    if (!isCardNumberValid || !isCardHolderNameValid || !isExpirationDateValid || !isCvvValid) {
+    if (!isCardNumberValid || !isCardHolderNameValid || !isCvvValid || !isExpirationDateValid) {
       return false;
     }
 
@@ -159,46 +174,19 @@ function validateCardNumber() {
 
   function CheckFieldsAreEmpty()
   {
-    const [cardHolderNameInput, cardNumberInput, cvvInput, expirationDateInput] = returnInputElements();
-
+    const [cardHolderNameInput, cardNumberInput, cvvInput, selectedMonth, selectedYear] = returnInputElements();
     addFieldRequiredError();
-    if(cardHolderNameInput.value == '' || cardNumberInput.value == '' || cvvInput.value == '' || expirationDateInput.value == '')
+    if(cardHolderNameInput.value == '' || cardNumberInput.value == '' || cvvInput.value == '' || selectedMonth.value == '' || selectedYear.value == '')
     {
       return true
     }
     return false;
   }
 
-  function submitForm() 
-  {
-    if (validateAllPaymentDetails()) 
-    {
-      window.location.href = "../ThankYou/thankYou.html";
-    }
-  }
-
-  function returnInputElements()
-  {
-    const cardHolderNameInput = document.getElementById('cardHolderName');
-    const cardNumberInput = document.getElementById('cardNumber');
-    const cvvInput = document.getElementById('cvv');
-    const expirationDateInput = document.getElementById('expirationDate');
-    return [cardHolderNameInput, cardNumberInput, cvvInput, expirationDateInput];
-  }
-
-  function returnInputErrorElements()
-  {
-    const cardHolderNameError = document.getElementById('cardHolderNameError');
-    const cardNumberError = document.getElementById('cardNumberError');
-    const cvvInputError = document.getElementById('cvvError');
-    const expirationDateError = document.getElementById('expirationDateError');
-    return [cardHolderNameError, cardNumberError, cvvInputError, expirationDateError];
-  }
-
   function addFieldRequiredError()
   {
-    const [cardHolderNameInput, cardNumberInput, cvvInput, expirationDateInput] = returnInputElements();
-    const[cardHolderNameError, cardNumberError, cvvInputError, expirationDateError] = returnInputErrorElements();
+    const [cardHolderNameInput, cardNumberInput, cvvInput, selectedMonth, selectedYear] = returnInputElements();
+    const[cardHolderNameError, cardNumberError, cvvInputError, monthError, yearError] = returnInputErrorElements();
     if(cardHolderNameInput.value == '')
     {
       cardHolderNameInput.classList.add('error');
@@ -214,16 +202,38 @@ function validateCardNumber() {
       cvvInput.classList.add('error');
       cvvInputError.innerText = '*  required field';
     }
-    if(expirationDateInput.value == '')
+    if(selectedMonth.value == '')
     {
-      expirationDateInput.classList.add('error');
-      expirationDateError.innerText = '*  required field';
+      selectedMonth.classList.add('invalid');
+      monthError.innerText = '*  required field';
+    }
+    if(selectedYear.value == '')
+    {
+      selectedYear.classList.add('invalid');
+      yearError.innerText =  '*  required field';
     }
   }
 
 
+  function returnInputElements()
+  {
+    const cardHolderNameInput = document.getElementById('cardHolderName');
+    const cardNumberInput = document.getElementById('cardNumber');
+    const cvvInput = document.getElementById('cvv');
+    const selectedMonth = document.getElementById('expirationMonth');
+    const selectedYear = document.getElementById('expirationYear');
 
+    return [cardHolderNameInput, cardNumberInput, cvvInput, selectedMonth, selectedYear];
+  }
 
+  function returnInputErrorElements()
+  {
+    const cardHolderNameError = document.getElementById('cardHolderNameError');
+    const cardNumberError = document.getElementById('cardNumberError');
+    const cvvInputError = document.getElementById('cvvError');
+    const monthError = document.getElementById('monthError');
+    const yearError = document.getElementById('yearError');
 
- 
+    return [cardHolderNameError, cardNumberError, cvvInputError, monthError, yearError];
+  }
   
